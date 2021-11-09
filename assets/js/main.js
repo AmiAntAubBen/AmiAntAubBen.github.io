@@ -1,4 +1,4 @@
-var svg = d3.select("#svg1").append("svg");
+var svg = d3.select("#main_svg").append("svg");
 svg.append("rect")
     .attr("x",20)
     .attr("y",20)
