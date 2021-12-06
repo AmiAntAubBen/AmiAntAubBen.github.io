@@ -1,7 +1,12 @@
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
 function drawGroupBars() {
-/*    var margin = {top: 10, right: 30, bottom: 20, left: 50},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+
+    var margin = {top: 10, right: 30, bottom: 20, left: 50},
+        width = 500 - margin.left - margin.right,
+        height = 480 - margin.top - margin.bottom;
 
     var svg = d3.select("#my_dataviz")
         .append("svg")
@@ -11,15 +16,74 @@ function drawGroupBars() {
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.json("getData", function (data) {
+    d3.json("/getAlbumData.json", function (data) {
 
-        console.log("get data", data);
+        console.log("this the data",data)
+        let filteredData=[];
+        let country="GB";
 
-        var subgroups = data.columns.slice(1);
+        data.forEach((d,i)=>{
 
-        var groups = d3.map(data, function (d) {
+            if(d.country != undefined ) {
+                if (d.country.localeCompare(country) == 0) {
+                    filteredData.push(d)
+                    //filteredData.push(d.genres)
+                }
+            }
+        })
+
+        var artistsData = d3.nest().key(function(d){return d.name}).entries(filteredData);
+
+        let groups=[];
+        var subgroups=[];
+
+        var genresData=[];
+
+        artistsData.forEach(d=>{
+            groups.push(d.key);
+            var t =  d3.nest().key(function(c){return c.genre}).entries(d.values);
+            genresData.push(t);
+        })
+
+        var processedData = [];
+        genresData.forEach((d,i)=>{
+            var subdoc={};
+            subdoc["group"]=groups[i];
+           d.forEach(c=>{
+
+
+                   subgroups.push(c.key);
+                   subdoc[c.key] = c.values.length;
+
+
+               if(subdoc["max"]==undefined){
+                   subdoc["max"]= c.values.length;
+               }
+               else{
+                   subdoc["max"]= c.values.length;
+               }
+           })
+           processedData.push(subdoc);
+        })
+
+        //console.log("processdata",processedData);
+
+        subgroups=subgroups.filter(onlyUnique);
+       // //console.log("temp",temp);
+
+        //console.log("subgroup",subgroups);
+
+        //console.log("artistname",artistsData);
+
+        //var subgroups = Object.keys(data)
+/*
+       var groups = d3.map(data[1], function (d) {
             return (d.group)
-        }).keys()
+        }).keys()*/
+
+
+
+        //console.log("okkk",data)
 
         var x = d3.scaleBand()
             .domain(groups)
@@ -30,7 +94,7 @@ function drawGroupBars() {
             .call(d3.axisBottom(x).tickSize(0));
 
         var y = d3.scaleLinear()
-            .domain([0, 40])
+            .domain([0, d3.max(processedData, d=>d.max)])
             .range([height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -44,9 +108,12 @@ function drawGroupBars() {
             .domain(subgroups)
             .range(['#e41a1c', '#377eb8', '#4daf4a'])
 
+
+        console.log("processedData",processedData);
+
         svg.append("g")
             .selectAll("g")
-            .data(data)
+            .data(processedData)
             .enter()
             .append("g")
             .attr("transform", function (d) {
@@ -73,12 +140,12 @@ function drawGroupBars() {
                 return color(d.key);
             })
             .on("click",function(d){
-
+                        console.log("clickkkkk",d);
             });
 
 
     })
 
- */
+
 }
 
