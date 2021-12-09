@@ -14,11 +14,13 @@
 
 <script>
     //window.onload = drawGroupBars();
-    const userAction = async () => {
-        const response = await fetch('wasabi.i3s.unice.fr/api/v1/album/id/5714debe25ac0d8aee36b664\n');
-        const myJson = await response.json(); //extract JSON from the http response
-        console.log(myJson);
-        // do something with myJson
+    const Http = new XMLHttpRequest();
+    const url='https://wasabi.i3s.unice.fr/api/v1/album/id/5714debe25ac0d8aee36b664';
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange = (e) => {
+        console.log(Http.responseText)
     }
 </script>
 </html>
