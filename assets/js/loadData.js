@@ -8,7 +8,7 @@ const url = {
 $(document).ready(function (){
     console.log( "ready!" );
 
-    $("#overview").load('./component/visu1.html');
+    $("#overview").load('./components/visu1.html');
 
     $.get(url.dbinfo, function (data, status){
         if(status === 'success' && data.nbArtist.length !== 0){
