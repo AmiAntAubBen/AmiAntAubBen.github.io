@@ -55,25 +55,9 @@
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#visu1" class="mdl-layout__tab is-active">Visu1</a>
-          <a href="#visu2" class="mdl-layout__tab">Visu2</a>
-          <a href="#visu3" class="mdl-layout__tab">Visu3</a>
-          <a href="#visu4" class="mdl-layout__tab">Visu4</a>
-          <a href="#visu5" class="mdl-layout__tab">Visu5</a>
-        </div>
+        <div id="menuVisu" class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark"></div>
       </header>
       <main class="mdl-layout__content">
-        <div class="mdl-layout__tab-panel is-active" embedHTML="visu1.html" >
-        </div>
-        <div class="mdl-layout__tab-panel is-active" embedHTML="visu2.html">
-        </div>
-        <div class="mdl-layout__tab-panel is-active" embedHTML="visu3.html">
-        </div>
-        <div class="mdl-layout__tab-panel is-active" embedHTML="visu4.html">
-        </div>
-        <div class="mdl-layout__tab-panel is-active" embedHTML="visu5.html">
-        </div>
         <footer class="mdl-mega-footer">
           <div class="mdl-mega-footer--bottom-section">
             <ul class="mdl-mega-footer--link-list">
@@ -94,6 +78,16 @@
       </main>
     </div>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="./assets/js/loadData.js"></script>
+
+    <script src="assets/js/data/db.js"></script>
+    <script src="assets/js/data/getDbInfo.js"></script>
+    <script src="assets/js/data/url.js"></script>
+    <script src="assets/js/data/loadData.js"></script>
+    <script src="assets/js/data/retrieveAllAlbumsId.js"></script>
+
+    <script src="assets/js/d3/common.js"></script>
+    <script src="assets/js/d3/visu1.js"></script>
+    <script src="assets/js/d3/visu2.js"></script>
+
   </body>
 </html>
