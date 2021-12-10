@@ -1,25 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>D3 Chart</title>
-    <!--<script src="assets/js/barchart.js"></script>-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+
+    <title>D3JS - M2 MIAGE PROJECT</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.1/d3.min.js" integrity="sha512-9c0GmN+/oSw/jqoyulCN4XlMkDbC6MRGASQZLlmJ2T8FwNQWub4IvHg0MrjEkt3dQ45voHmZuTOCBgdPQ2XbIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-<body>
 
-<div id="my_dataviz"></div>
-<div style="width: 10px; height: 10px; background-color: red;"></div>
-</body>
+    <link rel="shortcut icon" href="./assets/images/favicon.png">
 
-<script>
-    //window.onload = drawGroupBars();
-    $(document).ready(function (){
-        const Url = 'https://wasabi.i3s.unice.fr/api/v1/album/id/5714debe25ac0d8aee36b664';
-        $.get(Url, function (data, status){
-            console.log(`${data}` + `${status}`)
-        })
-    })
-</script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-deep_purple.min.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h3>D3.js - M2 MIAGE PROJECT &nbsp;&nbsp;&nbsp;</h3>
+          <span class="mdl-chip mdl-chip--deletable">
+            <span class="mdl-chip__text"><span>Database<button type="button" class="mdl-chip__action"><i class="material-icons">check_circle</i></button>&nbsp;</span><span id="database_connexion"></span>&nbsp;&nbsp;</span>
+          </span>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="#overview" class="mdl-layout__tab is-active">Visu1</a>
+          <a href="#features" class="mdl-layout__tab">Visu2</a>
+          <a href="#features" class="mdl-layout__tab">Visu3</a>
+          <a href="#features" class="mdl-layout__tab">Visu4</a>
+          <a href="#features" class="mdl-layout__tab">Visu5</a>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel is-active" id="overview">
+
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Lorem ipsum dolor sit amet</h5>
+                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                </div>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Lorem ipsum dolor sit amet</h5>
+                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                </div>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Lorem ipsum dolor sit amet</h5>
+                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                </div>
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">Read our features</a>
+              </div>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
+              <li class="mdl-menu__item">Lorem</li>
+              <li class="mdl-menu__item" disabled>Ipsum</li>
+              <li class="mdl-menu__item">Dolor</li>
+            </ul>
+          </section>
+        </div>
+        <footer class="mdl-mega-footer">
+          <div class="mdl-mega-footer--bottom-section">
+            <ul class="mdl-mega-footer--link-list">
+              <div class="mdl-logo">
+                Developped by Amina DRIDI - Benjamin GUILLON - Antony LAGET - Aubin SACCO
+              </div>
+            </ul>
+            <ul class="mdl-mega-footer--link-list">
+              <li><a href="https://github.com/AmiAntAubBen/AmiAntAubBen.github.io">Github</a></li>
+              <li><a href="https://docs.google.com/document/d/103GGy-HSnMI8UDSimUOTyhc0Ojwn4fQYL79WfLe7hZ8/edit">Document de recherche</a></li>
+            </ul>
+            <ul class="mdl-mega-footer--link-list">
+              <li>Source des données : <a href="https://wasabi.i3s.unice.fr/">WASABI Song Database (Université de Nice)</a></li>
+              <li>Visualisation : <a href="https://d3js.org/">Data-Driven Documents (D3.js)</a></li>
+            </ul>
+          </div>
+        </footer>
+      </main>
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="./assets/js/loadData.js"></script>
+  </body>
 </html>
