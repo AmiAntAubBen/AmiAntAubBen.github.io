@@ -11,6 +11,10 @@ $(document).ready(function (){
     $("#visu1").load('./components/visu1.html');
     $("#visu2").load('./components/visu2.html');
 
+    $("div[embedHTML]").each(function () {
+        $(this).load($(this).attr("embedHTML"));
+    });
+
 
     $.get(url.dbinfo, function (data, status){
         if(status === 'success' && data.nbArtist.length !== 0){
