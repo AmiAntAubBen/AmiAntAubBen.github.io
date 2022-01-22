@@ -1,0 +1,29 @@
+{
+  "name": "amiantaubben.github.io",
+  "version": "1.0.0",
+  "description": "***Projet Data Visualisation (Wasabi Song Corpus Dataset)***",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmiAntAubBen/AmiAntAubBen.github.io.git"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.2.0",
+    "mongoose": "^6.0.14",
+    "nodemon": "^2.0.15",
+    "morgan": "~1.9.1",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "flatted": "^3.2.4"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmiAntAubBen/AmiAntAubBen.github.io/issues"
+  },
+  "homepage": "https://github.com/AmiAntAubBen/AmiAntAubBen.github.io#readme"
+}
