@@ -60,8 +60,19 @@ async function loadVisualisationComponent(idVisu, componentURL){
 }
 
 function loadVisualisationScript(idVisu, jsContent) {
-
-    document.querySelector("#visu" + idVisu).innerHTML += "<script id=\"scriptVisu " + idVisu + "\">" + jsContent + "</script>";
+    var setInnerHTML = function(elm, html) {
+        elm.innerHTML = html;
+        Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
+            const newScript = document.createElement("script");
+            Array.from(oldScript.attributes)
+                .forEach( attr => newScript.setAttribute(attr.name, attr.value) );
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+        });
+    }
+    let elm = document.querySelector("#visu" + idVisu);
+    //document.querySelector("#visu" + idVisu).innerHTML += "<script id=\"scriptVisu " + idVisu + "\">" + jsContent + "</script>";
+    setInnerHTML(elm,jsContent)
 
     //document.querySelector("#scriptVisu" + idVisu)).append();
 }
@@ -70,6 +81,7 @@ function loadVisualisationScript(idVisu, jsContent) {
 function loadVisualisationContent(idVisu, htmlContent){
 
     document.querySelector("#visu" + idVisu).innerHTML = htmlContent;
+
 
 }
 
