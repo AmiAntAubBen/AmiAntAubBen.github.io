@@ -59,7 +59,7 @@ function renderTooltip(tooltip) {
     };
 }
 
-d3.csv("data.csv", function (d) {
+d3.csv("./data.csv", function (d) {
     return {
         album_genre: d.album_genre,
         explicit_content_lyrics: +d.explicit_content_lyrics,
