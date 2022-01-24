@@ -6,8 +6,8 @@ function loadPage(){
 
     loadVisualisation(1, "Animated BarChart", "./components/visu1")
     loadVisualisation(2, "Choroplèthe", "./components/visu2")
-    loadVisualisation(3, "Diagrammes en batons", "./components/visu3")
-    loadVisualisation(4, "Liste", "./components/visu4")
+    loadVisualisation(3, "Stacked bar chart", "./components/visu3")
+    loadVisualisation(4, "Diagramme circulaire", "./components/visu4")
 
 }
 
@@ -60,8 +60,15 @@ async function loadVisualisationComponent(idVisu, componentURL){
 }
 
 function loadVisualisationScript(idVisu, jsContent) {
-    document.querySelector("#visu" + idVisu).innerHTML += "<script id=\"scriptVisu " + idVisu + "\">" + jsContent + "</script>";
-
+    if(idVisu == 3){
+        var ifrm = document.createElement("iframe");
+        ifrm.setAttribute("src", "components/visu3/visu3.html");
+        ifrm.style.width = "100%";
+        ifrm.style.height = "780px";
+        document.querySelector("#visu" + idVisu).innerHTML = ifrm.outerHTML;
+        console.log(document.querySelector("#visu" + idVisu))
+    }else{
+        document.querySelector("#visu" + idVisu).innerHTML += "<script id=\"scriptVisu " + idVisu + "\">" + jsContent + "</script>";}
     //document.querySelector("#scriptVisu" + idVisu)).append();
 }
 
@@ -72,6 +79,8 @@ function loadVisualisationContent(idVisu, htmlContent){
 
 
 }
+
+
 
 
 
